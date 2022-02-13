@@ -33,6 +33,11 @@ class KBCardHTMLParser(HTMLParser):
             tmp = list(이용내역_jsonstring)
             tmp[len(tmp)-2] = ''
             이용내역_jsonstring = ''.join(tmp)
+        이용내역_jsonstring = 이용내역_jsonstring.replace('"', '\'')
+        이용내역_jsonstring = 이용내역_jsonstring.replace('\'<', '"<')
+        이용내역_jsonstring = 이용내역_jsonstring.replace('>\'', '>"')
+        이용내역_jsonstring = 이용내역_jsonstring.replace('\'data\'', '"data"')
+        이용내역_jsonstring = 이용내역_jsonstring.replace('\'청구일련번호\'', '"청구일련번호"')
 
         이용내역_json = json.loads(이용내역_jsonstring.encode('utf8'))
         이용내역_json = filter(lambda i : 0 == i['data'].count('colspan='), 이용내역_json)
