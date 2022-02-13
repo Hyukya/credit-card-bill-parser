@@ -7,12 +7,12 @@ class LotteCardHTMLParser(HTMLParser):
     full_tag = []
 
     def handle_starttag(self, tag, attrs):
-        if tag == 'meta':
+        if tag in ['meta', 'br']:
             return
         self.full_tag.append(tag)
 
     def handle_endtag(self, tag):
-        if tag == 'meta':
+        if tag in ['meta', 'br']:
             return
         self.full_tag.pop()
 
