@@ -72,7 +72,6 @@ if __name__ == "__main__":
     parser = KBCardHTMLParser()
     result = parser.parse(sys.argv[1])
     
-    print(result)
     print('내역')
     for i in result['내역']:
         print(i['이용일자'], i['이용하신_가맹점'], i['이용금액'])
